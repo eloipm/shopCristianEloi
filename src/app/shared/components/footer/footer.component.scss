@@ -1,0 +1,13 @@
+footer{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    user-select: none;
+}
+h2{
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px gray;
+}

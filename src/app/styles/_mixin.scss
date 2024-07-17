@@ -1,0 +1,16 @@
+@mixin theme($colors) {
+    header {
+      background-color: map-get($colors, header-bg-color);
+      color: map-get($colors, header-text-color);
+    }
+  
+    footer {
+      background-color: map-get($colors, footer-bg-color);
+      color: map-get($colors, footer-text-color);
+    }
+  
+    main {
+      background-color: map-get($colors, main-bg-color);
+      color: map-get($colors, main-text-color);
+    }
+  }
