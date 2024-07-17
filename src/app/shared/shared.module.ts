@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { GoBackDirective } from './directives/go-back.directive';
 
 
 
@@ -10,14 +11,16 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     SpinnerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GoBackDirective
   ],
   imports: [
     CommonModule
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GoBackDirective
   ]
 })
 export class SharedModule { }

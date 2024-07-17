@@ -1,9 +1,13 @@
 footer{
-    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6vh;
+    padding-top: 1rem;
     justify-content: center;
-    padding: 15px;
     user-select: none;
 }
+
 h2{
     flex: 1;
     text-align: center;
