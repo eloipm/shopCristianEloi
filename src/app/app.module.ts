@@ -11,7 +11,9 @@ import { NoAuthComponent } from './features/pages/no-auth/no-auth.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { tokenAuthInterceptor } from './core/interceptors/token-auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,17 @@ import { provideHttpClient } from '@angular/common/http';
     SharedModule,
     CoreModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+        allowedDomains: ['home']
+      }
+    })
   ],
   providers: [
-    provideHttpClient()
+    provideHttpClient(withInterceptors([tokenAuthInterceptor]))
   ],
   bootstrap: [AppComponent]
 })
