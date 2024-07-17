@@ -7,6 +7,7 @@ import { HomeComponent } from './features/pages/home/home.component';
 import { AboutComponent } from './features/pages/about/about.component';
 import { LoginSignupComponent } from './features/pages/login-signup/login-signup.component';
 import { BasketComponent } from './features/pages/basket/basket.component';
+import { NoAuthComponent } from './features/pages/no-auth/no-auth.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BasketComponent } from './features/pages/basket/basket.component';
     HomeComponent,
     AboutComponent,
     LoginSignupComponent,
-    BasketComponent
+    BasketComponent,
+    NoAuthComponent
   ],
   imports: [
     BrowserModule,
