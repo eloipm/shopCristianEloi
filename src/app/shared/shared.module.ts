@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
 @NgModule({
   declarations: [
     SpinnerComponent,
-    ErrorPageComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

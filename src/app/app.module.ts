@@ -8,6 +8,8 @@ import { AboutComponent } from './features/pages/about/about.component';
 import { LoginSignupComponent } from './features/pages/login-signup/login-signup.component';
 import { BasketComponent } from './features/pages/basket/basket.component';
 import { NoAuthComponent } from './features/pages/no-auth/no-auth.component';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NoAuthComponent } from './features/pages/no-auth/no-auth.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

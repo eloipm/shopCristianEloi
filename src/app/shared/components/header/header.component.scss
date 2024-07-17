@@ -1,0 +1,75 @@
+@import '../../../../styles.scss';
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    user-select: none;
+    min-height: 70px;
+}
+
+button {
+    all: unset;
+}
+
+.themeIcon {
+    font-size: 1.4rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px gray;
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 4rem;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .languageFlag {
+        width: 1.8rem;
+
+        &:hover {
+            width: 2rem; 
+        }
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 552px) {
+    header {
+        height: 4rem;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .languageFlag {
+        width: 1.5rem;
+
+        &:hover {
+            width: 1.7rem;
+        }
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+}
