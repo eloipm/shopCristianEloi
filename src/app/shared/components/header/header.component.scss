@@ -1,4 +1,5 @@
 @import '../../../../styles.scss';
+@import './../../../styles/variables.scss';
 
 header {
     display: flex;
@@ -72,4 +73,50 @@ h1 {
     .nav-links a {
         font-size: 0.8rem;
     }
+}
+
+.navigator{
+    display: flexbox;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    width: 100%;
+    height: 50px;
+    align-items: self;
+    ul{
+        display: inline-block;
+    }
+}
+ul{
+    width: fit-content;
+    height: fit-content;
+    align-content: center;
+    border: 3px, solid , $v-yellow;
+    border-radius: 10px;
+    height: 40px;
+    li{
+        display: inline-block;
+        height: 100%;
+        // overflow: auto;
+    }
+}
+
+li{
+    width: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+align-content: center;
+}
+
+li+li{
+    border-left: 3px solid $v-yellow;
+}
+
+.nav-center{
+}
+.nav-left{
+    border-radius: 10px 0px 0px 10px ;
+}
+.nav-right{
+    border-radius: 0px 10px 10px 0px ;
 }
