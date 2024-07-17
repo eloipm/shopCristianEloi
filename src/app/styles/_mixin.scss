@@ -13,4 +13,16 @@
       background-color: map-get($colors, main-bg-color);
       color: map-get($colors, main-text-color);
     }
+
+    button {
+      background-color: map-get($colors, footer-bg-color);
+      color: map-get($colors, main-text-color);
+    } 
+      
+  }
+
+
+  @mixin button(){
+      padding: 5px 10px 5px 10px;
+      border-radius: 20px;
   }
