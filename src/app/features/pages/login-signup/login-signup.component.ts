@@ -49,10 +49,18 @@ export class LoginSignupComponent implements OnInit {
     const { email, password } = this.LogInForm?.value;
     this.service.postAuth(email, password).subscribe({
       next: () => {
-        if(localStorage.getItem('token')){
-          this.route.navigate(['home'])
+        if (localStorage.getItem('token')) {
+          this.service.getUser().subscribe(
+            {
+              next: (data) => {
+                
+              }, error: (e) => { throw e }
+
+            }
+          )
+          this.route.navigate(['home']);
         }
-       },
+      },
       error: (err) => { console.error(err) }
     });
 

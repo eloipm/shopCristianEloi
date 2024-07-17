@@ -1,0 +1,43 @@
+@import '../../../../styles.scss';
+main{
+    display: flex;
+    justify-content: center;
+}
+.welcome{
+    padding: 5vh;
+    width: 55%;
+    height: auto;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-radius: 20px;
+    text-align: justify;
+    box-shadow: 1px 1px 2px gray;
+
+    h2,h3{
+        text-align: center;
+    }
+
+    h2{
+        margin-top: 4vh;
+        margin-bottom: 2vh;
+    }
+
+    h3{
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+    }
+
+    button{
+        display: block;
+        margin: 5vh auto;
+        padding: 1vh;
+        border-radius: 10px;
+        border: none;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px $v-lightblack;
+        &:hover{
+            
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
