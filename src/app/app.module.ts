@@ -10,6 +10,8 @@ import { BasketComponent } from './features/pages/basket/basket.component';
 import { NoAuthComponent } from './features/pages/no-auth/no-auth.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,12 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

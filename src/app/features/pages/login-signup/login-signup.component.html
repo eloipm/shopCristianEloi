@@ -1,1 +1,32 @@
-<p>login-signup works!</p>
+<main>
+    <div class="signuploginForm">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+            <form [formGroup]="SignUpForm!" (ngSubmit)="ClickSignUp()">
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" formControlName="name" name="Name" id="suName" placeholder="Name" required>
+
+                <input type="text" formControlName="email" name="Email" id="suEmail" placeholder="Email"
+                    required>
+
+                <input type="password" formControlName="password" name="Password" id="suPassword" placeholder="Password"
+                    required>
+                <select formControlName="role" name="role" id="role">
+                    <option value="admin">Administrator</option>
+                    <option value="customer">Customer</option>
+                </select>
+
+                <button type="submit" class="button">Sign up</button>
+            </form>
+        </div>
+
+        <div class="login">
+            <form [formGroup]="LogInForm!" (ngSubmit)="ClickLogIn()">
+                <label for="chk" aria-hidden="true">Login</label>
+                <input type="email" name="Email" formControlName="email" id="liEmail" placeholder="Email"  required>
+                <input type="password" name="Password" formControlName="password" id="liPassword" placeholder="Password" required>
+            <button class="button">Log in</button>
+        </form>
+        </div>
+    </div>
+</main>
