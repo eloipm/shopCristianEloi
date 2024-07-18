@@ -54,12 +54,15 @@ export class LoginSignupComponent implements OnInit {
           this.service.getUser().subscribe(
             {
               next: (data) => {
-                
+                this.route.navigate(['home']).then(() => {
+                  window.location.reload();
+                });
+
               }, error: (e) => { throw e }
 
             }
           )
-          this.route.navigate(['home']);
+
         }
       },
       error: (err) => { console.error(err) }
