@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from '../../../core/services/login.service';
 import { Iuser } from '../../../core/interfaces/user.interface';
 
@@ -9,17 +9,30 @@ import { Iuser } from '../../../core/interfaces/user.interface';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
+
   private router=inject(Router);
   private service = inject(LoginService)
   private isDarkMode = false;
 
   user?:Iuser;
+  currentUrl?: string;
+
   ngOnInit(): void {
     this.service.retrieveUser().subscribe(
       data=>{
         console.log('HEADER',data);
         this.user = data}
-    )
+    );
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.url;
+      }
+    });
+  }
+
+  isActive(route: string): boolean {
+    return this.currentUrl === route;
   }
 
   toggleTheme() {

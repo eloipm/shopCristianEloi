@@ -1,1 +1,35 @@
-<p>about works!</p>
+<main>
+    <div class="aboutInf">
+        <h1>Who we are</h1>
+        <p>We are Cristian and Eloi, web developers currently enrolled in the Angular Vueling University program. Our
+            passion for technology and commitment to continuous learning drive us to create innovative and efficient web
+            solutions.</p>
+
+        <h1>Our journey</h1>
+        <p>As aspiring developers, we have honed our skills in various web technologies, with a special focus on
+            Angular. Through the Angular Vueling University, we have gained comprehensive knowledge and practical
+            experience that empower us to tackle complex challenges in web development.</p>
+
+        <h1>Connect With Us</h1>
+        <p>We believe in the power of collaboration and are always eager to connect with like-minded professionals. You
+            can find our work and connect with us on GitHub and LinkedIn:</p>
+
+        <p>Thank you for visiting our website. We look forward to sharing our journey and projects with you. If you have
+            any questions or would like to collaborate, feel free to reach out!</p>
+        <div class="cards">
+            <div class="card" *ngFor="let creator of creators">
+                <h2>{{ creator.name }}</h2>
+                <img [src]="creator.image" [alt]="creator.name + ' Photo'">
+
+                <div class="social-buttons">
+                    <a [href]="creator.githubLink" target="_blank">
+                        <img src="../../../../assets/images/about/github.png" alt="GitHub Logo">
+                    </a>
+                    <a [href]="creator.linkedinLink" target="_blank">
+                        <img src="../../../../assets/images/about/linkedin.png" alt="LinkedIn Logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
