@@ -1,0 +1,25 @@
+
+main{
+    margin: 0;
+}
+.main-container{
+    margin: 0;
+    width: 100%;
+    display: flex;
+}
+
+.container-left{
+    width: 80%;
+    float: left;
+}
+
+.container-right{
+    width: 20%;
+    float: left;
+}
+
+.card-container{
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}

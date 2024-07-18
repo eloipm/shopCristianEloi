@@ -1,0 +1,5 @@
+<ng-container *ngFor="let category of list">
+    <div (click)="sendCategory(category.id)" class="category-container">
+        <p>{{category.name}}</p>   
+    </div>
+</ng-container>

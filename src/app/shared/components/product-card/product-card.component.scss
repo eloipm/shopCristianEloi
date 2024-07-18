@@ -1,0 +1,44 @@
+@import './../../../styles/mixin';
+
+img{
+    height: 120px;
+    border-radius: 5px;
+}
+
+.card-container{
+    margin: 8px;
+    width: 250px;
+    max-height: 250px;
+    overflow: hidden;
+    background-color: antiquewhite;
+    padding: 5px;
+    border-radius: 5px;
+}
+.img-container{
+    display: flex;
+    align-items: start;
+    height: 120px;
+    // text-align: justify;
+    // text-justify:inter-word;
+    
+}
+
+.btn-container{
+    width: 100%;
+    height: 100%;
+    display: block;
+    align-content: center;
+}
+
+button{
+    @include button
+}
+
+.text-container{
+    margin-top: 6px;
+}
+
+h4,p{
+    text-align: start;
+    
+}

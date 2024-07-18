@@ -1,3 +1,16 @@
 <main>
-    <h1>products</h1>
+    <div class="main-container">
+    <div class="container-left">
+        <p>Mirando la categoria {{currentCategory}}</p>   
+        <app-search-bar [searchList]="allList"  (responseItems)="updateShowList($event)"></app-search-bar>
+            <div class="card-container">
+                <ng-container *ngFor="let item of showList">
+                    <app-product-card [item]="item" ></app-product-card>
+                </ng-container>
+            </div>
+        </div>
+        <div class="container-right">
+            <app-filter [list]="categoriesList"  (categoryValue)="updateCategory($event)"></app-filter>
+        </div>
+    </div>
 </main>
