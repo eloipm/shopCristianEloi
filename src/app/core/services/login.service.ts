@@ -1,43 +1,53 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  tap,
+  throwError,
+} from 'rxjs';
 import { Iuser } from '../interfaces/user.interface';
 import { environment } from '../../environments/environment';
 import { Data } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
 
-  user = new BehaviorSubject<Iuser>(this.getUserData())
+  user = new BehaviorSubject<Iuser|undefined>(this.getUserData());
 
   postUser(user: Iuser) {
     return this.http.post<Iuser>(`${this.apiUrl}/users`, user).pipe(
-      catchError(error => {
-        console.error('Error while posting user: ', error)
+      catchError((error) => {
+        console.error('Error while posting user: ', error);
         return throwError(() => new Error(error));
-      }
-      )
-    )
+      })
+    );
   }
 
   postAuth(email: string, password: string) {
-    return this.http.post<Data>(`${this.apiUrl}/auth/login`, { email: email, password: password }).pipe(
-      map(response => {
-        const token = response['access_token'];
-        const refresh_token = response['refresh_token'];
-        localStorage.setItem('token', token);
-        localStorage.setItem('refresh_token', refresh_token);
-      }),
-      catchError(error => {
-        console.error('Error while authenticating user: ', error)
-        return throwError(() => new Error(error));
-      }
-      )
-    )
+    return this.http
+      .post<Data>(`${this.apiUrl}/auth/login`, {
+        email: email,
+        password: password,
+      })
+      .pipe(
+        map((response) => {
+          const token = response['access_token'];
+          const refresh_token = response['refresh_token'];
+          localStorage.setItem('token', token);
+          localStorage.setItem('refresh_token', refresh_token);
+        }),
+        catchError((error) => {
+          console.error('Error while authenticating user: ', error);
+          return throwError(() => new Error(error));
+        })
+      );
   }
 
   // getLoggedInUsername(): string | null {
@@ -47,37 +57,36 @@ export class LoginService {
   //     console.log('decoded: '+decodedToken)
   //     return decodedToken.username;
   //   } else {
-  //     return null; 
+  //     return null;
   //   }
   // }
 
   getUser() {
-    const header=new HttpHeaders();
-    header.append( 'Authorization', localStorage.getItem('token')! )
-    console.log('LS. '+localStorage.getItem('token'))
-    console.log('ENTRA GETUSER: '+JSON.stringify(header));
-    return this.http.get<Iuser>(`${this.apiUrl}/auth/profile` ).pipe(
+    const header = new HttpHeaders();
+    header.append('Authorization', localStorage.getItem('token')!);
+    console.log('LS. ' + localStorage.getItem('token'));
+    console.log('ENTRA GETUSER: ' + JSON.stringify(header));
+    return this.http.get<Iuser>(`${this.apiUrl}/auth/profile`).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
           console.log(event.headers);
         }
       }),
-      map(
-        data => {
-          console.log('GETUSER: ', data)
-          localStorage.setItem('user', JSON.stringify(data))
-        }
-
-      ),
-      catchError(error => { throw error })
-    )
+      map((data) => {
+        console.log('GETUSER: ', data);
+        localStorage.setItem('user', JSON.stringify(data));
+      }),
+      catchError((error) => {
+        throw error;
+      })
+    );
   }
 
   getUserData(): Iuser {
-    return JSON.parse(localStorage.getItem('user')!)
+    return JSON.parse(localStorage.getItem('user')!);
   }
 
-  retrieveUser(){
-    return this.user.asObservable()
+  retrieveUser() {
+    return this.user.asObservable();
   }
 }
