@@ -1,29 +1,35 @@
+@import './variables';
+
 @mixin theme($colors) {
-    header {
-      background-color: map-get($colors, header-bg-color);
-      color: map-get($colors, header-text-color);
-    }
-  
-    footer {
-      background-color: map-get($colors, footer-bg-color);
-      color: map-get($colors, footer-text-color);
-    }
-  
-    main {
-      background-color: map-get($colors, main-bg-color);
-    }
-
-    button {
-      background-color: map-get($colors, footer-bg-color);
-      color: map-get($colors, main-text-color);
-    } 
-      
+  header {
+    background-color: map-get($colors, header-bg-color);
+    color: map-get($colors, header-text-color);
   }
 
-  
-
-
-  @mixin button(){
-      padding: 5px 10px 5px 10px;
-      border-radius: 20px;
+  footer {
+    background-color: map-get($colors, footer-bg-color);
+    color: map-get($colors, footer-text-color);
   }
+
+  main {
+    background-color: map-get($colors, main-bg-color);
+  }
+
+  button {
+    background-color: map-get($colors, footer-bg-color);
+    color: map-get($colors, main-text-color);
+  }
+
+}
+
+
+
+
+@mixin button() {
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  &:hover{
+    scale: 1.05;
+    cursor: pointer;
+  }
+}
