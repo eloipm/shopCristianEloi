@@ -1,5 +1,4 @@
 @import '../../../../styles.scss';
-@import './../../../styles/variables.scss';
 
 header {
     display: flex;
@@ -8,14 +7,17 @@ header {
     padding: 15px;
     user-select: none;
     min-height: 70px;
+    border-bottom: 1px solid black;
 }
 
 button {
     all: unset;
+    text-shadow: 1px 1px 2px gray;
 }
 
 .themeIcon {
     font-size: 1.4rem;
+
     &:hover {
         cursor: pointer;
     }
@@ -27,7 +29,79 @@ h1 {
     margin: 0;
     font-size: 2rem;
     text-shadow: 1px 1px 1px gray;
+
+    a {
+        cursor: pointer;
+    }
+}
+
+.navigator {
+    background-color: $v-yellow;
+    display: flexbox;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    width: 100%;
+    height: 60px;
+    align-items: self;
+    border-bottom: 1px solid black;
+
+    ul {
+        display: inline-block;
+    }
+}
+
+ul {
+    width: fit-content;
+    height: fit-content;
+    height: 40px;
+
+    li {
+        display: inline-block;
+        height: 100%;
+    }
+}
+
+li {
+    padding-left: 15px;
+    padding-right: 15px;
+    align-content: center;
     cursor: pointer;
+    &:hover{
+        text-shadow: 1px 1px 2px gray;
+    }
+    &.active {
+        text-shadow: 2px 2px 3px gray;
+    }
+}
+
+li+li {
+    border-left: 1px solid $v-lightblack;
+    height: 60%;
+}
+
+.nav-left {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.nav-right {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.logout {
+    left: 0;
+    top: 80px;
+    border: 1px solid $v-lightblack;
+    padding: 3px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px gray;
+    background-color: rgb(255, 255, 255,0.2);
+
+    &:hover {
+        cursor: pointer;
+        scale: 1.1;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -44,7 +118,7 @@ h1 {
         width: 1.8rem;
 
         &:hover {
-            width: 2rem; 
+            width: 2rem;
         }
     }
 
@@ -74,59 +148,4 @@ h1 {
     .nav-links a {
         font-size: 0.8rem;
     }
-}
-
-.navigator{
-    background-color: $v-yellow;
-    display: flexbox;
-    align-content: center;
-    text-align: center;
-    align-self: center;
-    width: 100%;
-    height: 60px;
-    align-items: self;
-    ul{
-        display: inline-block;
-    }
-}
-ul{
-    width: fit-content;
-    height: fit-content;
-    border: 3px, solid , $v-white;
-    border-radius: 10px;
-    height: 40px;
-    li{
-        display: inline-block;
-        height: 100%;
-        // overflow: auto;
-    }
-}
-
-li{
-    width: 80px;
-    padding-left: 10px;
-    padding-right: 10px;
-align-content: center;
-cursor: pointer;
-}
-
-li+li{
-    border-left: 3px solid $v-white;
-}
-
-li:hover{
-    text-shadow: $v-white 1px 1px;
-}
-
-.nav-left{
-    border-radius: 10px 0px 0px 10px ;
-}
-.nav-right{
-    border-radius: 0px 10px 10px 0px ;
-}
-
-.log-out{
-    left: 0;
-    top: 80px;
-    cursor: pointer;
 }
