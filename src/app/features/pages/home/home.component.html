@@ -1,6 +1,6 @@
 <main>
     <div class="welcome">
-        <h1>Hello, {{user.name}}</h1>
+        <h1>¡Hello, {{user.name}}!</h1>
 
         <h2>Welcome to Our E-commerce Platform</h2>
         <p>We're glad to see you again! You have successfully logged in and are ready to explore everything our store has to offer. On our platform, we have integrated product data directly from a public API (https://api.escuelajs.co/docs#/), giving you access to a wide variety of products from different categories.</p>
@@ -11,9 +11,9 @@
 
         <h3>Administrative Management (Admins Only)</h3>
         <p>If you have registered as an administrator, you have exclusive access to a private page where you can manage users. Here, you can view detailed information about the users registered on our platform, allowing you to maintain efficient control and management of your e-commerce. 
-            <br>We strive to provide you with the best online shopping experience. If you have any questions or need assistance, please don't hesitate to contact our support team. 
-            <br>Enjoy your time here and happy shopping!</p>
+            <br>We strive to provide you with the best online shopping experience. 
+            <br><br>Enjoy your time here and happy shopping!</p>
 
-        <button>Start shopping</button>
+        <button (click)="navigateToProducts()">Start shopping</button>
     </div>
 </main>
