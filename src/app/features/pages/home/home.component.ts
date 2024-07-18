@@ -18,9 +18,12 @@ export class HomeComponent implements OnInit{
 
 
   ngOnInit(){
+    //window.location.reload();
     this.service.retrieveUser().subscribe(
       data=> this.user=data
+      
     )
+    
   }
   navigateToProducts(){
     this.route.navigate(['products'])

@@ -50,22 +50,9 @@ export class LoginService {
       );
   }
 
-  // getLoggedInUsername(): string | null {
-  //   const token = localStorage.getItem('token')?.toString();
-  //   if (token) {
-  //     const decodedToken = this.jwtHelper.decodeToken(token);
-  //     console.log('decoded: '+decodedToken)
-  //     return decodedToken.username;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
   getUser() {
     const header = new HttpHeaders();
     header.append('Authorization', localStorage.getItem('token')!);
-    console.log('LS. ' + localStorage.getItem('token'));
-    console.log('ENTRA GETUSER: ' + JSON.stringify(header));
     return this.http.get<Iuser>(`${this.apiUrl}/auth/profile`).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
