@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit{
   private service=inject(LoginService);
   private route=inject(Router);
 
-  user!:Iuser;
+  user?:Iuser;
+  //loggedInUsername: string | null = null;
+
 
   ngOnInit(){
     this.service.retrieveUser().subscribe(

@@ -46,6 +46,7 @@ export class LoginSignupComponent implements OnInit {
   }
 
   ClickLogIn() {
+    console.log("click del boton")
     const { email, password } = this.LogInForm?.value;
     this.service.postAuth(email, password).subscribe({
       next: () => {

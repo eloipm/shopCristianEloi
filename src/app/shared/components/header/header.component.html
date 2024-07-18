@@ -1,4 +1,15 @@
 <header>
     <button class="themeIcon" (click)="toggleTheme()">🌓</button>
     <h1><a (click)="navigateToHome()">VUELING UNIVERSITY - 2024</a></h1>
+    <button (click)="logout()" class="logout">Log Out</button>
 </header>
+<ng-container *ngIf="user" >
+    <nav class="navigator">
+        <ul>
+            <li routerLink="home" class="nav-left">HOME</li>
+            <li routerLink="products" class="nav-center">PRODUCTS</li>
+            <li  routerLink="users" *ngIf="user.role==='admin'" class="nav-center">USERS</li>
+            <li routerLink="about" class="nav-right">ABOUT</li>
+        </ul>
+    </nav>
+</ng-container>

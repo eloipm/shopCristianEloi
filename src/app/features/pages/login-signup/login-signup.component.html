@@ -3,8 +3,8 @@
         <input type="checkbox" id="chk" aria-hidden="true">
         <div class="signup">
             <form [formGroup]="SignUpForm!" (ngSubmit)="ClickSignUp()">
-                <label for="chk" aria-hidden="true">Sign up</label>
-                <input type="text" formControlName="name" name="Name" id="suName" placeholder="Name" required>
+                <label  for="chk" aria-hidden="true">Sign up</label>
+                <input id="signup-name" type="text" formControlName="name" name="Name" id="suName" placeholder="Name" required>
 
                 <input type="text" formControlName="email" name="Email" id="suEmail" placeholder="Email"
                     required>
@@ -22,10 +22,10 @@
 
         <div class="login">
             <form [formGroup]="LogInForm!" (ngSubmit)="ClickLogIn()">
-                <label for="chk" aria-hidden="true">Login</label>
+                <label id="login-label" for="chk" aria-hidden="true">Login</label>
                 <input type="email" name="Email" formControlName="email" id="liEmail" placeholder="Email"  required>
                 <input type="password" name="Password" formControlName="password" id="liPassword" placeholder="Password" required>
-            <button class="button">Log in</button>
+            <button id="login-button" class="button">Log in</button>
         </form>
         </div>
     </div>

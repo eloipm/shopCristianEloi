@@ -1,4 +1,5 @@
 @import '../../../../styles.scss';
+@import './../../../styles/variables.scss';
 
 header {
     display: flex;
@@ -26,6 +27,7 @@ h1 {
     margin: 0;
     font-size: 2rem;
     text-shadow: 1px 1px 1px gray;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -72,4 +74,59 @@ h1 {
     .nav-links a {
         font-size: 0.8rem;
     }
+}
+
+.navigator{
+    background-color: $v-yellow;
+    display: flexbox;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    width: 100%;
+    height: 60px;
+    align-items: self;
+    ul{
+        display: inline-block;
+    }
+}
+ul{
+    width: fit-content;
+    height: fit-content;
+    border: 3px, solid , $v-white;
+    border-radius: 10px;
+    height: 40px;
+    li{
+        display: inline-block;
+        height: 100%;
+        // overflow: auto;
+    }
+}
+
+li{
+    width: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+align-content: center;
+cursor: pointer;
+}
+
+li+li{
+    border-left: 3px solid $v-white;
+}
+
+li:hover{
+    text-shadow: $v-white 1px 1px;
+}
+
+.nav-left{
+    border-radius: 10px 0px 0px 10px ;
+}
+.nav-right{
+    border-radius: 0px 10px 10px 0px ;
+}
+
+.log-out{
+    left: 0;
+    top: 80px;
+    cursor: pointer;
 }
