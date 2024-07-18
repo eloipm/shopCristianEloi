@@ -10,13 +10,15 @@ import { Iuser } from '../../../core/interfaces/user.interface';
 })
 export class HeaderComponent implements OnInit{
   private router=inject(Router);
-  private serice = inject(LoginService)
+  private service = inject(LoginService)
   private isDarkMode = false;
 
-  user!:Iuser;
+  user?:Iuser;
   ngOnInit(): void {
-    this.serice.retrieveUser().subscribe(
-      data=> this.user = data
+    this.service.retrieveUser().subscribe(
+      data=>{
+        console.log('HEADER',data);
+        this.user = data}
     )
   }
 
@@ -36,7 +38,13 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
+    this.service.user.next(undefined);
     localStorage.clear();
     this.router.navigate(['user-form']);
+  }
+
+  potato(){
+    console.log('click');
+    
   }
 }
