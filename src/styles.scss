@@ -18,7 +18,7 @@ main{
   }
 }
 h1,h2,h3{
-  text-shadow: 1px 2px 2px gray;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 // Modo oscuro y por defecto
@@ -41,7 +41,7 @@ $dark-mode-colors: (
   footer-text-color:$v-yellow,
   
   main-bg-color: $v-lightblack,
-  main-text-color:$v-yellow
+  main-text-color:$v-darkyellow
 );
 
 
