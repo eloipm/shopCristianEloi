@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'products', loadChildren:() => import('./features/products/products.module').then(m=>m.ProductsModule)},
   {path: 'user-form', component: LoginSignupComponent },
   {path: 'home', component: HomeComponent },
+  {path: 'users', loadChildren:() => import('./features/products/products.module').then(m=>m.ProductsModule)},
   {path:'no-auth',component:NoAuthComponent},
   {path:'**',component:ErrorPageComponent},
 ];
