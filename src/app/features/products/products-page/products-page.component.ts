@@ -22,6 +22,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   categoriesList: ICategory[] = [];
 
   currentCategory?: number;
+  loading: boolean = false;
 
   cService: GenericService<ICategory, ICategory>;
   constructor(
@@ -61,11 +62,13 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.subs.push(
       this.cService.getList().subscribe(
         {
           next: (data) => {
             this.categoriesList = data;
+            this.loading = false;
           }
         }
       )

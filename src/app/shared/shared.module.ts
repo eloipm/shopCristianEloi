@@ -40,7 +40,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     ProductCardComponent,
     UserCardComponent,
     SearchBarComponent,
-    FilterComponent
+    FilterComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule { }
