@@ -1,0 +1,12 @@
+@import '../../../../styles.scss';
+input{
+    background-color: rgb(255, 255, 255,0.2);
+    box-shadow: 1px 1px 2px gray;
+    height: 20px;
+    border-radius: 5px;
+    padding: 2px;
+    &::placeholder{
+        color: $v-yellow;
+        font-weight: bold;
+    }
+}

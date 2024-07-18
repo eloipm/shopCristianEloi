@@ -1,4 +1,4 @@
-
+@import '../../../../styles.scss';
 main{
     margin: 0;
 }
@@ -11,6 +11,11 @@ main{
 .container-left{
     width: 80%;
     float: left;
+    padding: 10px;
+    background-color: rgb(255, 255, 255,0.2);
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px gray;
+    
 }
 
 .container-right{
@@ -21,5 +26,6 @@ main{
 .card-container{
     padding-top: 40px;
     display: flex;
+    justify-content: center ;
     flex-wrap: wrap;
 }
