@@ -1,0 +1,13 @@
+<div class="card-container">
+  <div class="img-container">
+    <img [src]="item?.getAvatar() | defaultImage : item | safeUrl : 'url'" />
+    <div class="btn-container">
+      <button>{{ item?.getButtonText() }}</button>
+    </div>
+  </div>
+  <div class="text-container">
+    <h4>{{ item?.getSearchValue() }}</h4>
+    <br />
+    <p>{{ item?.getOtherValue() }}</p>
+  </div>
+</div>

@@ -11,10 +11,11 @@ import { authGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'user-form'},
   {path: 'products', loadChildren:() => import('./features/products/products.module').then(m=>m.ProductsModule), canActivate:[authGuard]},
-  
+  {path: 'users', loadChildren:() => import('./features/products/products.module').then(m=>m.ProductsModule),canActivate:[authGuard,adminGuard]},
   {path: 'home', component: HomeComponent, canActivate:[authGuard]},
-  {path: 'about', component: AboutComponent, canActivate:[authGuard,adminGuard] },
+  {path: 'about', component: AboutComponent, canActivate:[authGuard]},
   {path: 'user-form', component: LoginSignupComponent },
+  
   {path:'no-auth',component:NoAuthComponent},
   {path:'**',component:ErrorPageComponent},
 ];
