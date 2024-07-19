@@ -8,7 +8,6 @@ export const authGuard: CanActivateFn = (route, state) => {
     if (user) {
       return true;
     } else {
-        console.log('Usuario no logeado')
       router.navigate(['user-form']);
       return false;
     }

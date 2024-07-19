@@ -23,7 +23,6 @@ export class Product implements IProduct, CardInfo {
   }
 
   isCategory(category?:number):boolean{
-    console.log(category);
     if(category===undefined){
       return true;
     }

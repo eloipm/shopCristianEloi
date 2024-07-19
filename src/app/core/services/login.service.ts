@@ -56,11 +56,9 @@ export class LoginService {
     return this.http.get<Iuser>(`${this.apiUrl}/auth/profile`).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
-          console.log(event.headers);
         }
       }),
       map((data) => {
-        console.log('GETUSER: ', data);
         sessionStorage.setItem('user', JSON.stringify(data));
       }),
       catchError((error) => {
