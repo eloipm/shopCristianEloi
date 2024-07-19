@@ -24,6 +24,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   currentCategory?: number;
   loading: boolean = false;
   searchValue:string="";
+  showCategories:boolean=true;
 
   cService: GenericService<ICategory, ICategory>;
   pService:GenericService<IProduct, IProduct>;
@@ -38,6 +39,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           if (event.url.includes('user')) {
+            this.showCategories=false;
             this.subs.push(
               userService!.getList().subscribe({
                 next: (data) =>
@@ -47,6 +49,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
                   })
               }))
           } else {
+            this.showCategories=true;
             this.subs.push(
               productsService!.getList().subscribe(
                 {
