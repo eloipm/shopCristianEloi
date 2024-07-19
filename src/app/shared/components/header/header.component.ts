@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit{
   ngOnInit(): void {
     this.service.retrieveUser().subscribe(
       data=>{
-        console.log('HEADER',data);
         this.user = data}
     );
 
@@ -54,6 +53,5 @@ export class HeaderComponent implements OnInit{
 
   potato(){
     console.log('click');
-    
   }
 }

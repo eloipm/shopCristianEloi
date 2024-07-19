@@ -32,7 +32,7 @@ import { ICategory } from './core/interfaces/category.interface';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient(withInterceptors([tokenAuthInterceptor])),
