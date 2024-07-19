@@ -1,12 +1,13 @@
+import { Data } from '@angular/router';
 import { CardInfo } from '../interfaces/cardInfo.interface';
 import { ICategory } from '../interfaces/category.interface';
 import { IProduct } from '../interfaces/product.interface';
 
 export class Product implements IProduct, CardInfo {
   title: string;
-  price: 0;
+  price: number;
   description: string;
-  category:ICategory;
+  category: ICategory;
   images: string[];
 
   constructor(product: IProduct) {
@@ -14,13 +15,26 @@ export class Product implements IProduct, CardInfo {
     this.price = product.price;
     this.description = product.description;
     this.category = product.category;
+
     this.images = product.images;
   }
   getName(): string {
     return this.title;
   }
+
+  isCategory(category?:number):boolean{
+    console.log(category);
+    if(category===undefined){
+      return true;
+    }
+    if(this.category?.id === category){
+      return true;
+    }
+    return false;
+  }
+
   getOtherValue(): string {
-    return this.description.substring(0,100)+"...";
+    return this.description.substring(0, 100) + '...';
   }
   getAvatar(): string | undefined {
     return this.images[0];
@@ -30,11 +44,11 @@ export class Product implements IProduct, CardInfo {
     return this.title.toLowerCase();
   }
 
-  getCategory(){
+  getCategory() {
     return this.category.id;
   }
 
-  getButtonText(){
-    return "Comprar";
+  getButtonText() {
+    return 'Comprar';
   }
 }

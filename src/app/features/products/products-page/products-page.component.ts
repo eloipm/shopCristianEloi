@@ -23,14 +23,17 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
 
   currentCategory?: number;
   loading: boolean = false;
+  searchValue:string="";
 
   cService: GenericService<ICategory, ICategory>;
+  pService:GenericService<IProduct, IProduct>;
   constructor(
     @Inject('categoriesService') categoryService: GenericService<ICategory, ICategory>,
     @Inject('productsService') productsService: GenericService<IProduct, IProduct>,
     @Inject('userService') userService: GenericService<Iuser, Iuser>,
   ) {
     this.cService = categoryService;
+    this.pService = productsService;
     this.subs.push(
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
@@ -61,6 +64,19 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
       }));
   }
 
+  // addItem(){
+  //   this.pService.add({
+  //       "title": "Producto 1",
+  //       "price": 10,
+  //       "description": "Descripcion producto 1 VU2024",
+  //       "categoryId": 3,
+  //       "images": [
+  //         "https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png"
+  //       ]
+      
+  //   })
+  // }
+
   ngOnInit(): void {
     this.loading = true;
     this.subs.push(
@@ -69,7 +85,8 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
           next: (data) => {
             this.categoriesList = data;
             this.loading = false;
-          }
+          },
+          complete: ()=>{}
         }
       )
     )
@@ -77,13 +94,21 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
 
   updateCategory(categoryId: number) {
     this.currentCategory = categoryId;
+    this.filterList();
+
   }
 
-  updateShowList(list: (Product | User)[]) {
-    console.log("update views");
-
-    this.showList = list;
+  updateShowList(searchValue:string) {
+    this.searchValue = searchValue;
+    this.filterList();
   }
+  
+  filterList(){
+    this.showList = this.allList.filter(data=>data.getSearchValue().includes(this.searchValue) && data.isCategory(this.currentCategory!));
+    
+  }
+
+  
 
   ngOnDestroy(): void {
     this.subs.forEach(s => s.unsubscribe())
