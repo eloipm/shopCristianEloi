@@ -90,12 +90,12 @@ describe('LoginSignupComponent', () => {
     button.click();
     // const mockHtttp = http.expectOne('https://api.escuelajs.co/api/v1/auth/login')
     // mockHtttp.flush(token);
-    // expect(localStorage.getItem('token')).toEqual('token1');
+    // expect(sessionStorage.getItem('token')).toEqual('token1');
     // expect(label.textContent).toEqual("Login")
 
     // const mockHtttp2 = http.expectOne('https://api.escuelajs.co/api/v1/auth/profile')
     // mockHtttp2.flush(user);
-    // expect(JSON.parse(localStorage.getItem('user')!).id).toEqual(92)
+    // expect(JSON.parse(sessionStorage.getItem('user')!).id).toEqual(92)
     console.log(router.getCurrentNavigation())
   })
 });

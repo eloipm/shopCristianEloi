@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 a {
@@ -20,31 +21,6 @@ main{
 h1,h2,h3{
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
 }
-
-// Modo oscuro y por defecto
-$light-mode-colors: (
-  header-bg-color: $v-yellow,
-  header-text-color:$v-black,
-
-  footer-bg-color: $v-yellow,
-  footer-text-color:$v-black,
-
-  main-bg-color: $v-white,
-  main-text-color:$v-black
-);
-
-$dark-mode-colors: (
-  header-bg-color: $v-black,
-  header-text-color:$v-yellow,
-
-  footer-bg-color: $v-black,
-  footer-text-color:$v-yellow,
-  
-  main-bg-color: $v-lightblack,
-  main-text-color:$v-darkyellow
-);
-
-
 
 body.light-mode {
   @include theme($light-mode-colors);

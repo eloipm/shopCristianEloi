@@ -37,4 +37,8 @@ export class Product implements IProduct, CardInfo {
   getButtonText(){
     return "Comprar";
   }
+
+  getType(){
+    return 'product'
+  }
 }

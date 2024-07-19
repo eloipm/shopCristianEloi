@@ -12,6 +12,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { GoHomeDirective } from './directives/go-home.directive';
 
 
 
@@ -26,7 +27,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     SearchBarComponent,
     FilterComponent,
     DefaultImagePipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    GoHomeDirective
   ],
   imports: [
     CommonModule,

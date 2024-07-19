@@ -25,9 +25,7 @@ constructor(@Inject(SERVICE_CONFIG) config: ServiceConfig){
 }
 
 getList() {
-  console.log("prrimerooo");
-  
-  return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`,{params:{limit:10}});
+  return this.http.get<TModel[]>(`${this.baseUrl}${this.resourceUrl}`,{params:{limit:100}});
 }
 
 getById(id: number) {
