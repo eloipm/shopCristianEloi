@@ -40,8 +40,8 @@ export class LoginService {
         map((response) => {
           const token = response['access_token'];
           const refresh_token = response['refresh_token'];
-          localStorage.setItem('token', token);
-          localStorage.setItem('refresh_token', refresh_token);
+          sessionStorage.setItem('token', token);
+          sessionStorage.setItem('refresh_token', refresh_token);
         }),
         catchError((error) => {
           console.error('Error while authenticating user: ', error);
@@ -52,7 +52,7 @@ export class LoginService {
 
   getUser() {
     const header = new HttpHeaders();
-    header.append('Authorization', localStorage.getItem('token')!);
+    header.append('Authorization', sessionStorage.getItem('token')!);
     return this.http.get<Iuser>(`${this.apiUrl}/auth/profile`).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
@@ -61,7 +61,7 @@ export class LoginService {
       }),
       map((data) => {
         console.log('GETUSER: ', data);
-        localStorage.setItem('user', JSON.stringify(data));
+        sessionStorage.setItem('user', JSON.stringify(data));
       }),
       catchError((error) => {
         throw error;
@@ -70,7 +70,7 @@ export class LoginService {
   }
 
   getUserData(): Iuser {
-    return JSON.parse(localStorage.getItem('user')!);
+    return JSON.parse(sessionStorage.getItem('user')!);
   }
 
   retrieveUser() {

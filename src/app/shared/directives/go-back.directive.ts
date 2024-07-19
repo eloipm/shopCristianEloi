@@ -1,7 +1,5 @@
 import { Location } from '@angular/common';
-import { AfterContentInit, ChangeDetectorRef, Directive, HostListener, inject, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
-import { filter, pairwise } from 'rxjs';
+import {Directive, HostListener, inject} from '@angular/core';
 
 @Directive({
   selector: '[goBack]'

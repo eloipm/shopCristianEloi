@@ -3,3 +3,26 @@ $v-yellow: #DDC23A;
 $v-darkyellow: #e4c116;
 $v-black: #1D1C1C;
 $v-lightblack: #232222;
+
+// Modo oscuro y por defecto
+$light-mode-colors: (
+  header-bg-color: $v-yellow,
+  header-text-color:$v-black,
+
+  footer-bg-color: $v-yellow,
+  footer-text-color:$v-black,
+
+  main-bg-color: $v-white,
+  main-text-color:$v-black
+);
+
+$dark-mode-colors: (
+  header-bg-color: $v-black,
+  header-text-color:$v-yellow,
+
+  footer-bg-color: $v-black,
+  footer-text-color:$v-yellow,
+  
+  main-bg-color: $v-lightblack,
+  main-text-color:$v-darkyellow
+);

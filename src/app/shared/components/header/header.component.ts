@@ -46,13 +46,9 @@ export class HeaderComponent implements OnInit{
     }
   }
 
-  navigateToHome() {
-    this.router.navigate(['home']);
-  }
-
   logout(){
     this.service.user.next(undefined);
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['user-form']);
   }
 

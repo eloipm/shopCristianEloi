@@ -18,7 +18,7 @@ export class User implements Iuser, CardInfo{
    
   
     getSearchValue(){
-        return this.name;
+        return this.name.toLowerCase();
     }
 
     getName(){
@@ -37,5 +37,8 @@ export class User implements Iuser, CardInfo{
         return "eliminar";
     }
 
+    getType(){
+        return 'user'
+      }
 
 }

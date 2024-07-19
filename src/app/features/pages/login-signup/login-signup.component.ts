@@ -50,7 +50,7 @@ export class LoginSignupComponent implements OnInit {
     const { email, password } = this.LogInForm?.value;
     this.service.postAuth(email, password).subscribe({
       next: () => {
-        if (localStorage.getItem('token')) {
+        if (sessionStorage.getItem('token')) {
           this.service.getUser().subscribe(
             {
               next: (data) => {
