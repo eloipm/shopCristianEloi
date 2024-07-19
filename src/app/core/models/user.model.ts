@@ -23,6 +23,7 @@ export class User implements Iuser, CardInfo{
 
     isCategory(category:number):boolean{
         return true;
+
     }
 
     getName(){
@@ -41,5 +42,8 @@ export class User implements Iuser, CardInfo{
         return "eliminar";
     }
 
+    getType(){
+        return 'user'
+      }
 
 }

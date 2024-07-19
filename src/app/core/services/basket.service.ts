@@ -10,11 +10,11 @@ export class BasketService {
 
 
   saveBasket(){
-    localStorage.setItem('basket', JSON.stringify(this.basket))
+    sessionStorage.setItem('basket', JSON.stringify(this.basket))
   }
 
   getBasket():IProduct[]|[]{
-    return JSON.parse(localStorage.getItem('basket')!) ?? []
+    return JSON.parse(sessionStorage.getItem('basket')!) ?? []
   }
   
   
