@@ -6,10 +6,10 @@
 <ng-container *ngIf="user">
     <nav class="navigator">
         <ul>
-            <li routerLink="home" class="nav-left" [class.active]="isActive('/home')">HOME</li>
-            <li routerLink="products" class="nav-center" [class.active]="isActive('/products')">PRODUCTS</li>
-            <li  routerLink="users" *ngIf="user.role==='admin'" class="nav-center" [class.active]="isActive('/users')">USERS</li>
-            <li routerLink="about" class="nav-right" [class.active]="isActive('/about')">ABOUT</li>
+            <li routerLink="home" class="nav-left" [class.active]="isActive('/home')"><i class="fa-solid fa-house"></i> HOME</li>
+            <li routerLink="products" class="nav-center" [class.active]="isActive('/products')"><i class="fa-solid fa-bag-shopping"></i> PRODUCTS</li>
+            <li  routerLink="users" *ngIf="user.role==='admin'" class="nav-center" [class.active]="isActive('/users')"><i class="fa-solid fa-user"></i> USERS</li>
+            <li routerLink="about" class="nav-right" [class.active]="isActive('/about')"><i class="fa-solid fa-info"></i> ABOUT</li>
             
         </ul>
     </nav>
