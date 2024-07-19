@@ -1,4 +1,4 @@
-import {
+  import {
   Component,
   EventEmitter,
   Input,
@@ -6,17 +6,11 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { IProduct } from '../../../core/interfaces/product.interface';
-import { Iuser } from '../../../core/interfaces/user.interface';
 import { Product } from '../../../core/models/product.model';
 import { User } from '../../../core/models/user.model';
 import {
-  debounce,
   debounceTime,
-  distinctUntilChanged,
-  Subject,
-  Subscription,
-  switchMap,
+  Subject
 } from 'rxjs';
 import { FormControl } from '@angular/forms';
 
@@ -26,10 +20,7 @@ import { FormControl } from '@angular/forms';
   styleUrl: './search-bar.component.scss',
 })
 export class SearchBarComponent implements OnInit{
-  @Input() searchList: (Product | User)[] = [];
-  @Output() responseItems: EventEmitter<(Product | User)[]> = new EventEmitter<
-    (Product | User)[]
-  >();
+  @Output() responseItems: EventEmitter<string> = new EventEmitter<string>();
 
   currentSearch = new FormControl('',{nonNullable:true});
 
@@ -38,16 +29,11 @@ export class SearchBarComponent implements OnInit{
   ngOnInit(): void {
     this.currentSearch.valueChanges.pipe(debounceTime(1000)).subscribe(
       data=> {
-        this.emitSearch(data);
+        this.responseItems.emit(data.toLowerCase());
       }
       
     );
   }
+ 
 
-
-  emitSearch(search:string) {
-    let list= this.searchList.filter(item=>item.getSearchValue().includes(search.toLowerCase()));
-    console.log(list);
-    this.responseItems.emit(list??[])
-  }
 }

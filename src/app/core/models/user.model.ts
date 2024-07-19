@@ -9,7 +9,7 @@ export class User implements Iuser, CardInfo{
     avatar: string;
 
     constructor(user:Iuser){
-        this.email = user.email;
+    this.email = user.email;
     this.name = user.name;
     this.password = user.password;
     this.role = user.role;
@@ -19,6 +19,11 @@ export class User implements Iuser, CardInfo{
   
     getSearchValue(){
         return this.name.toLowerCase();
+    }
+
+    isCategory(category:number):boolean{
+        return true;
+
     }
 
     getName(){

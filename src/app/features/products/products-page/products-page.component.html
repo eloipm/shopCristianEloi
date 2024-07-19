@@ -3,7 +3,8 @@
     <div class="main-container">
         <div class="container-left">
             <p>Mirando la categoria {{currentCategory}}</p>
-            <app-search-bar [searchList]="allList" (responseItems)="updateShowList($event)"></app-search-bar>
+            <app-search-bar  (responseItems)="updateShowList($event)"></app-search-bar>
+            <!-- <button (click)="addItem()">AddItem</button> -->
             <div class="card-container">
                 <ng-container *ngFor="let item of showList">
                     <app-product-card [item]="item"></app-product-card>
