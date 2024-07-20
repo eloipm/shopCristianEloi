@@ -4,6 +4,7 @@ import { ICategory } from '../interfaces/category.interface';
 import { IProduct } from '../interfaces/product.interface';
 
 export class Product implements IProduct, CardInfo {
+  id:number;
   title: string;
   price: number;
   description: string;
@@ -11,6 +12,7 @@ export class Product implements IProduct, CardInfo {
   images: string[];
 
   constructor(product: IProduct) {
+    this.id = product.id;
     this.title = product.title;
     this.price = product.price;
     this.description = product.description;

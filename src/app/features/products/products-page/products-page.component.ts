@@ -23,11 +23,11 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
 
   currentCategory?: number;
   loading: boolean = false;
-  searchValue:string="";
-  showCategories:boolean=true;
+  searchValue: string = "";
+  showCategories: boolean = true;
 
   cService: GenericService<ICategory, ICategory>;
-  pService:GenericService<IProduct, IProduct>;
+  pService: GenericService<IProduct, IProduct>;
   constructor(
     @Inject('categoriesService') categoryService: GenericService<ICategory, ICategory>,
     @Inject('productsService') productsService: GenericService<IProduct, IProduct>,
@@ -39,7 +39,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           if (event.url.includes('user')) {
-            this.showCategories=false;
+            this.showCategories = false;
             this.subs.push(
               userService!.getList().subscribe({
                 next: (data) =>
@@ -49,7 +49,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
                   })
               }))
           } else {
-            this.showCategories=true;
+            this.showCategories = true;
             this.subs.push(
               productsService!.getList().subscribe(
                 {
@@ -75,7 +75,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   //       "images": [
   //         "https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png"
   //       ]
-      
+
   //   })
   // }
 
@@ -88,7 +88,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
             this.categoriesList = data;
             this.loading = false;
           },
-          complete: ()=>{}
+          complete: () => { }
         }
       )
     )
@@ -100,22 +100,23 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
 
   }
 
-  updateShowList(searchValue:string) {
+  updateShowList(searchValue: string) {
     this.searchValue = searchValue;
     this.filterList();
   }
-  
-  filterList(){
-    this.showList = this.allList.filter(data=>data.getSearchValue().includes(this.searchValue) && data.isCategory(this.currentCategory!));
-    
+
+  filterList() {
+    this.showList = this.allList.filter(data => data.getSearchValue().includes(this.searchValue) && data.isCategory(this.currentCategory!));
+
   }
 
-  
+  navigateToProductDetails(item: Product | User) {
+    if (item instanceof Product) {
+      this.router.navigate(['/product', item.id]);
+    }
+  }
 
   ngOnDestroy(): void {
     this.subs.forEach(s => s.unsubscribe())
   }
-
-
-
 }

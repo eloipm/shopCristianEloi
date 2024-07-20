@@ -5,7 +5,7 @@
             <app-search-bar  (responseItems)="updateShowList($event)"></app-search-bar>
             <div class="card-container">
                 <ng-container *ngFor="let item of showList">
-                    <app-product-card [item]="item"></app-product-card>
+                    <app-product-card [item]="item" (click)="navigateToProductDetails(item)"></app-product-card>
                 </ng-container>
             </div>
         </div>

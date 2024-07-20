@@ -10,11 +10,14 @@ import { SearchBarComponent } from '../../shared/components/search-bar/search-ba
 import { FilterComponent } from '../../shared/components/filter/filter.component';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { DefaultImagePipe } from '../../shared/pipes/default-image.pipe';
 
 
 @NgModule({
   declarations: [
     ProductsPageComponent,
+    ProductDetailsComponent,
 
   ],
   imports: [
@@ -22,14 +25,15 @@ import { SharedModule } from '../../shared/shared.module';
     ProductsRoutingModule,
     SharedModule
   ],
-  providers:[{provide:'userService',useFactory: ()=>new GenericService<Iuser,Iuser | Iuser>({resourceEndpoint:'/users'}),deps:[HttpClient]},
-  {provide:'productsService',useFactory: ()=>new GenericService<IProduct,IProduct | IProduct>({resourceEndpoint:'/products'}),deps:[HttpClient]}
-],
+  providers: [
+    { provide: 'userService', useFactory: () => new GenericService<Iuser, Iuser | Iuser>({ resourceEndpoint: '/users' }), deps: [HttpClient] },
+    { provide: 'productsService', useFactory: () => new GenericService<IProduct, IProduct | IProduct>({ resourceEndpoint: '/products' }), deps: [HttpClient] }
+  ],
 
-  exports:[
+  exports: [
     ProductsPageComponent
   ]
 })
-export class ProductsModule{
+export class ProductsModule {
 
- }
+}

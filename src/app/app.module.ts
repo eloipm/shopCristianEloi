@@ -37,7 +37,7 @@ import { ICategory } from './core/interfaces/category.interface';
   providers: [
     provideHttpClient(withInterceptors([tokenAuthInterceptor])),
     {provide:'categoriesService',useFactory: ()=>new GenericService<ICategory,ICategory | ICategory>({resourceEndpoint:'/categories'}),deps:[HttpClient]},
-    // {provide:'productsService',useFactory: ()=>new GenericService<IProduct,IProduct | IProduct>({resourceEndpoint:'/products'}),deps:[HttpClient]}
+    {provide:'productsService',useFactory: ()=>new GenericService<IProduct,IProduct | IProduct>({resourceEndpoint:'/products'}),deps:[HttpClient]}
   ],
   bootstrap: [AppComponent]
 })
