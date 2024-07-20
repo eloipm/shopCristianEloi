@@ -44,6 +44,7 @@ export class LoginService {
           sessionStorage.setItem('refresh_token', refresh_token);
         }),
         catchError((error) => {
+          window.alert('Error while authenticating user, please try again.')
           console.error('Error while authenticating user: ', error);
           return throwError(() => new Error(error));
         })

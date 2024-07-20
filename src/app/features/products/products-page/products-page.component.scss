@@ -3,9 +3,9 @@ main{
     margin: 0;
 }
 .main-container{
-    margin: 0;
     width: 100%;
     display: flex;
+    justify-content: center;
 }
 
 .container-left{
@@ -14,7 +14,7 @@ main{
     background-color: rgb(255, 255, 255,0.2);
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+    width: 75%;
 }
 
 .container-right{
@@ -25,6 +25,7 @@ main{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 15px;
+    width: 20%;
     height: fit-content;
     h2{
         margin: 15px;

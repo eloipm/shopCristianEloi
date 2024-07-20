@@ -43,7 +43,9 @@ import { GoHomeDirective } from './directives/go-home.directive';
     UserCardComponent,
     SearchBarComponent,
     FilterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DefaultImagePipe,
+    SafeUrlPipe
   ]
 })
 export class SharedModule { }

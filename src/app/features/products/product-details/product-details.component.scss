@@ -1,0 +1,43 @@
+@import '../../../../styles.scss';
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-card {
+    background-color: rgb(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+    h2{
+        color: $v-darkyellow;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    p {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        text-align: justify;
+    }
+
+    span {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.6rem;
+        color: $v-darkyellow;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+        @include button;
+    }
+}

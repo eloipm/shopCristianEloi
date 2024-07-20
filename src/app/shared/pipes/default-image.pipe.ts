@@ -31,7 +31,7 @@ export class DefaultImagePipe implements PipeTransform {
       }
       return value;
     }
-    const urlV= new URL(value);
+    //const urlV= new URL(value);
     
     return defImg;
   }
