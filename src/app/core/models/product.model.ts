@@ -20,6 +20,11 @@ export class Product implements IProduct, CardInfo {
 
     this.images = product.images;
   }
+
+  getId(){
+    return this.id;
+  }
+
   getName(): string {
     return this.title;
   }

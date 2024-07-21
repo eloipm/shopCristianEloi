@@ -4,6 +4,6 @@
         <img [src]="product.images[0] | defaultImage : item | safeUrl : 'url'" alt="{{ product.title }}">
         <span>{{ product.price }} €</span>
         <p>{{ product.description }}</p>
-        <button>Add to cart</button>
+        <button (click)="addToCart()">Add to cart</button>
     </div>
 </main>

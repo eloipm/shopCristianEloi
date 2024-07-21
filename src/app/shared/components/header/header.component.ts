@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from '../../../core/services/login.service';
 import { Iuser } from '../../../core/interfaces/user.interface';
+import { BasketService } from '../../../core/services/basket.service';
+import { Product } from '../../../core/models/product.model';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +13,23 @@ import { Iuser } from '../../../core/interfaces/user.interface';
 export class HeaderComponent implements OnInit{
 
   private router=inject(Router);
-  private service = inject(LoginService)
+  private service = inject(LoginService);
+  private basketS = inject(BasketService);
   private isDarkMode = false;
 
   user?:Iuser;
   currentUrl?: string;
+  basket:Product[] = [];
 
   ngOnInit(): void {
     this.service.retrieveUser().subscribe(
       data=>{
         this.user = data}
     );
+
+    this.basketS.basket.subscribe(
+      data=> this.basket = data
+    )
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

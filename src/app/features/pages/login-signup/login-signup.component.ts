@@ -48,9 +48,13 @@ export class LoginSignupComponent implements OnInit {
     this.service.postAuth(email, password).subscribe({
       next: () => {
         if (sessionStorage.getItem('token')) {
+          console.log('aquí va a coger el user');
+          
           this.service.getUser().subscribe(
             {
               next: (data) => {
+                console.log("aqui navega");
+                
                 this.route.navigate(['home']).then(() => {
                   window.location.reload();
                 });

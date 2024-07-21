@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, inject, Injectable, InjectionToken, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { catchError, map, tap } from 'rxjs';
+import { User } from '../models/user.model';
+import { Product } from '../models/product.model';
 
 export interface ServiceConfig {
   resourceEndpoint: string;
@@ -41,7 +44,17 @@ update(dto: TDto) {
 }
 
 remove(id: number) {
-  return this.http.delete<number>(`${this.baseUrl}${this.resourceUrl}/${id}`);
+  return this.http.delete<number>(`${this.baseUrl}${this.resourceUrl}/${id}`).pipe(
+    tap(data=>console.log(data)
+    ),
+    map(data=> console.log(data)
+    ),
+    catchError(err=>{
+      console.log(err);
+      
+      throw err})
+  );
 }
+
 
 }
