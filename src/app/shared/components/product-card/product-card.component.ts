@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../core/models/product.model';
 import { User } from '../../../core/models/user.model';
 
@@ -9,6 +9,9 @@ import { User } from '../../../core/models/user.model';
 })
 export class ProductCardComponent {
 @Input() item?: User|Product;
+@Output() sentItem:EventEmitter<User|Product> = new EventEmitter<User|Product>();
 
-
+actionBtn(){
+  this.sentItem?.emit(this.item!);
+}
 }

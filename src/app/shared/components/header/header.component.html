@@ -11,5 +11,6 @@
             <li routerLink="users" *ngIf="user.role==='admin'" class="nav-center" [class.active]="isActive('/users')"><i class="fa-solid fa-user"></i> USERS</li>
             <li routerLink="about" class="nav-right" [class.active]="isActive('/about')"><i class="fa-solid fa-info"></i> ABOUT</li>
         </ul>
+            <i class="fa-solid fa-basket-shopping">{{basket.length}}</i>
     </nav>
 </ng-container>

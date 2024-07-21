@@ -1,49 +1,52 @@
-import { CardInfo } from "../interfaces/cardInfo.interface";
-import { Iuser } from "../interfaces/user.interface";
+import { CardInfo } from '../interfaces/cardInfo.interface';
+import { Iuser } from '../interfaces/user.interface';
 
-export class User implements Iuser, CardInfo{
-    email: string;
-    name: string;
-    password: string;
-    role: string;
-    avatar: string;
+export class User implements Iuser, CardInfo {
+  id: number;
+  email: string;
+  name: string;
+  password: string;
+  role: string;
+  avatar: string;
 
-    constructor(user:Iuser){
+  constructor(user: Iuser) {
+    this.id = user.id;
     this.email = user.email;
     this.name = user.name;
     this.password = user.password;
     this.role = user.role;
     this.avatar = user.avatar;
-    }
-   
-  
-    getSearchValue(){
-        return this.name.toLowerCase();
-    }
+  }
 
-    isCategory(category:number):boolean{
-        return true;
+  getId() {
+    return this.id;
+  }
 
-    }
+  getSearchValue() {
+    return this.name.toLowerCase();
+  }
 
-    getName(){
-        return this.name;
-    }
+  isCategory(category: number): boolean {
+    return true;
+  }
 
-    getOtherValue(): string {
-       return this.role;
-    }
+  getName() {
+    return this.name;
+  }
 
-    getAvatar(): string {
-      return this.avatar;
-    }
+  getOtherValue(): string {
+    return this.role;
+  }
 
-    getButtonText(){
-        return "eliminar";
-    }
+  getAvatar(): string {
+    return this.avatar;
+  }
 
-    getType(){
-        return 'user'
-      }
+  getButtonText() {
+    return 'eliminar';
+  }
 
+  getType() {
+    return 'user';
+  }
 }
