@@ -25,5 +25,4 @@ export class BasketService {
     return JSON.parse(sessionStorage.getItem('basket')!) ?? []
   }
   
-  
 }

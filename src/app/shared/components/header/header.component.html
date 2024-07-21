@@ -10,7 +10,7 @@
             <li routerLink="products" class="nav-center" [class.active]="isActive('/products')"><i class="fa-solid fa-bag-shopping"></i> PRODUCTS</li>
             <li routerLink="users" *ngIf="user.role==='admin'" class="nav-center" [class.active]="isActive('/users')"><i class="fa-solid fa-user"></i> USERS</li>
             <li routerLink="about" class="nav-right" [class.active]="isActive('/about')"><i class="fa-solid fa-info"></i> ABOUT</li>
-            <li class="basket"><i class="fa-solid fa-basket-shopping"></i>({{basket.length}})</li>
+            <li routerLink="basket" class="nav-right" [class.active]="isActive('/basket')"><i class="fa-solid fa-basket-shopping"></i> BASKET ({{basket.length}})</li>
         </ul>
             
     </nav>
