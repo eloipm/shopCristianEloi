@@ -10,7 +10,7 @@ import { BasketComponent } from './features/pages/basket/basket.component';
 import { NoAuthComponent } from './features/pages/no-auth/no-auth.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { tokenAuthInterceptor } from './core/interceptors/token-auth.interceptor';
 import { GenericService } from './core/services/generic.service';
@@ -32,7 +32,8 @@ import { ICategory } from './core/interfaces/category.interface';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(withInterceptors([tokenAuthInterceptor])),

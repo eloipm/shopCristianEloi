@@ -25,4 +25,17 @@ export class BasketComponent implements OnInit {
   private calculateTotal(): void {
     this.totalPrice = this.basketItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
+
+  deleteItem(id: number) {
+    this.basketService.deleteBasketItem(id);
+  }
+
+  updateQuantity(item: Product) {
+    this.basketService.updateBasketItem(item);
+    this.calculateTotal();
+  }
+
+  removeAllItems(){
+    this.basketService.clearBasket();
+  }
 }
