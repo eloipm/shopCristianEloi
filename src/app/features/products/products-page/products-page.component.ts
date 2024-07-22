@@ -59,6 +59,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
             this.showCategories = false;
             this.getUsers();
           } else {
+            this.getCategories();
             this.showCategories = true;
 
             this.getProducts();
@@ -69,13 +70,8 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   }
 
   buttonFunct(item?: User | Product) {
-    console.log('recibimos un item', item);
-
     if (this.auth.getUserData().role === 'admin') {
-      console.log('es admin');
-
       if (item?.getType() === 'user') {
-        console.log('eliminamos un user');
         this.deleteUser(item!.getId());
       } 
     }
@@ -86,6 +82,8 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   }
 
   deleteUser(id: number) {
+    console.log("eliminar user");
+    
     if(id===this.auth.getUserData().id){
       return;
     }
@@ -108,10 +106,19 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.subs.push(
+    // this.subs.push(
+    //   this.getCategories()
+    // );
+  }
+
+  getCategories(){
+    this.categoriesList = [];
+    this.subs.push(   
       this.cService.getList().subscribe({
         next: (data) => {
           this.categoriesList = data;
+        
+          
           this.loading = false;
         },
         complete: () => {},
@@ -127,7 +134,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
           data.forEach((product) => {
             this.allList.push(new Product(product));
             this.showList = this.allList;
-
+            this.loading = false;
           }),
       })
     );
@@ -135,6 +142,8 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   }
 
   getUsers() {
+    console.log("vamos a los users");
+    
     this.allList = [];
     this.subs.push(
       this.uService!.getList().subscribe({
@@ -145,7 +154,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
               }
             })
             this.showList = this.allList;
-          
+            this.loading = false;
           }})
         ,
       
@@ -164,10 +173,13 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   }
 
   filterList() {
+    console.log("hasta aqui llega",this.currentCategory);
+    
     this.showList = this.allList.filter(
       (data) =>
-        data.getSearchValue().includes(this.searchValue) &&
-        data.isCategory(this.currentCategory!)
+        data.getSearchValue().includes(this.searchValue) 
+      &&
+        data.isCategory(this.currentCategory??0)
     );
   }
 

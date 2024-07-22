@@ -3,6 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
+import { Location } from '@angular/common';
 import { LoginSignupComponent } from './login-signup.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingHarness, RouterTestingModule } from '@angular/router/testing';
@@ -37,6 +38,7 @@ describe('LoginSignupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+
       declarations: [LoginSignupComponent],
       providers:[provideHttpClient(withInterceptors([tokenAuthInterceptor]))],
       imports:[
@@ -51,7 +53,7 @@ describe('LoginSignupComponent', () => {
     .compileComponents();
     
     // http = TestBed.inject(HttpTestingController);
-    // router = TestBed.inject(Location);
+    router = TestBed.inject(Location);
     fixture = TestBed.createComponent(LoginSignupComponent);
     // router = TestBed.inject(ActivatedRoute);
     component = fixture.componentInstance;
@@ -63,18 +65,19 @@ describe('LoginSignupComponent', () => {
   });
 
   it('should log user', ()=>{
+    fixture.autoDetectChanges();
     const refEl = fixture.elementRef;
     const items = refEl.nativeElement;
     const label = items.querySelector("#login-label");
     expect(label).toBeTruthy();
   
     label.click();
-    fixture.detectChanges();
+    // fixture.detectChanges();
     const email = items.querySelector("#liEmail");
     const password:HTMLInputElement = items.querySelector("#liPassword");
     const button = items.querySelector("#login-button");
     // let correo = fixture.debugElement.nativeElement.querySelector('#liEmail');
-    fixture.detectChanges();
+    // fixture.detectChanges();
     
     // router.events.subscribe(
     //   data=> console.log(data)
@@ -92,7 +95,7 @@ describe('LoginSignupComponent', () => {
     // correo.dispatchEvent(new Event('input'));
     
     button.click();
-    fixture.detectChanges();
+    // fixture.detectChanges();
     // http.expectOne('https://api.escuelajs.co/api/v1/auth/login')
     // mockHtttp.flush(token);
     // expect(sessionStorage.getItem('token')).toEqual('token1');

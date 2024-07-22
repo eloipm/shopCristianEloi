@@ -4,8 +4,10 @@ import { CanActivateFn, Router } from '@angular/router';
 export const authGuard: CanActivateFn = (route, state) => {
     const router = inject(Router);
     const token = sessionStorage.getItem('token');
-    
+  
     if (token) {
+      console.log("revisando el token");
+      
       return true;
     } else {
       router.navigate(['user-form']);
