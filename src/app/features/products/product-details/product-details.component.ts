@@ -42,5 +42,7 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(){
     this.bService.saveBasket(this.item!);
+    window.alert('Product added to cart.')
+    
   }
 }

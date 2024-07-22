@@ -5,16 +5,24 @@ import { BasketService } from '../../../core/services/basket.service';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrl: './basket.component.scss' 
+  styleUrl: './basket.component.scss'
 })
 export class BasketComponent implements OnInit {
-  basketItems!: Product[] ;
+  basketItems!: Product[];
+  totalPrice: number = 0;
 
-  private basketService=inject(BasketService)
+  private basketService = inject(BasketService);
 
   ngOnInit(): void {
     this.basketService.readBakset().subscribe({
-      next: (items) => this.basketItems = items
+      next: (items) => {
+        this.basketItems = items;
+        this.calculateTotal();
+      }
     });
+  }
+
+  private calculateTotal(): void {
+    this.totalPrice = this.basketItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
 }

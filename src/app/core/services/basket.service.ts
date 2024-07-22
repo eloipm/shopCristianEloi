@@ -12,7 +12,11 @@ export class BasketService {
 
   saveBasket(item:Product){
     let oldB:Product[] = this.getBasket();
+    if(oldB.find(product=>product.id == item.id)){
+      oldB.find(product=>product.id == item.id)!.quantity ++;
+    }else{
     oldB.push(item);
+    }
     sessionStorage.setItem('basket', JSON.stringify(oldB))
     this.basket.next(this.getBasket());
   }
@@ -20,6 +24,8 @@ export class BasketService {
   readBakset(){
     return this.basket.asObservable();
   }
+
+
 
   getBasket():Product[]|[]{
     return JSON.parse(sessionStorage.getItem('basket')!) ?? []

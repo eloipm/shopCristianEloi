@@ -60,6 +60,7 @@ export class HeaderComponent implements OnInit{
     this.service.user.next(undefined);
     sessionStorage.clear();
     localStorage.clear();
+    this.basketS.basket.next([]);
     this.router.navigate(['user-form']);
   }
 
