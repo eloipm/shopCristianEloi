@@ -70,9 +70,7 @@ return this.asbtractUSer;
         }
       }),
       map((data) => {
-        console.log("hemos cogido el user")
         this.asbtractUSer = new User(data);
-        console.log("hemos registrado el user",this.asbtractUSer);
         sessionStorage.setItem('user', JSON.stringify(data));
         this.user.next(new User(data));
       }),
