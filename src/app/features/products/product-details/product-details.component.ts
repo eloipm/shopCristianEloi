@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
   // private auth = inject(LoginService);
   private pService: GenericService<IProduct, IProduct>;
 
-  product!: Product;
+  //product!: Product;
 
   constructor(
     private auth:LoginService,
@@ -35,12 +35,12 @@ export class ProductDetailsComponent implements OnInit {
     const productTitle = this.route.snapshot.paramMap.get('id');
     if (productTitle) {
       this.pService.getById(Number(productTitle)).subscribe({
-        next: (data) => this.product = new Product(data)
+        next: (data) => this.item = new Product(data)
       });
     }
   }
 
   addToCart(){
-    this.bService.saveBasket(this.product);
+    this.bService.saveBasket(this.item!);
   }
 }

@@ -1,9 +1,9 @@
 <main>
-    <div *ngIf="product" class="product-card">
-        <h2>{{ product.title }}</h2>
-        <img [src]="product.images[0] | defaultImage : item | safeUrl : 'url'" alt="{{ product.title }}">
-        <span>{{ product.price }} €</span>
-        <p>{{ product.description }}</p>
+    <div *ngIf="item" class="product-card">
+        <h2>{{ item.title }}</h2>
+        <img [src]="item.images[0] | defaultImage : item | safeUrl : 'url'" alt="{{ item.title }}">
+        <span>{{ item.price }} €</span>
+        <p>{{ item.description }}</p>
         <button (click)="addToCart()">Add to cart</button>
     </div>
 </main>

@@ -1,1 +1,15 @@
-<p>basket works!</p>
+<main>
+    <div *ngIf="basketItems.length > 0; else emptyBasket" class="items-container">
+        <h1>Shopping Cart</h1>
+        <div *ngFor="let item of basketItems" class="basket-item">
+            <img [src]="item.images[0] | defaultImage | safeUrl : 'url'" alt="{{ item.title }}">
+            <div class="details">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.price | currency: 'EUR' }}</p>
+            </div>
+        </div>
+    </div>
+    <ng-template #emptyBasket>
+        <p>Your cart is empty.</p>
+    </ng-template>
+</main>

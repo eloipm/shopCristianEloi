@@ -8,12 +8,14 @@ import { AboutComponent } from './features/pages/about/about.component';
 import { adminGuard } from './core/guards/admin.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { ProductDetailsComponent } from './features/products/product-details/product-details.component';
+import { BasketComponent } from './features/pages/basket/basket.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'user-form'},
   {path: 'products', loadChildren:() => import('./features/products/products.module').then(m=>m.ProductsModule), canActivate:[authGuard]},
   {path: 'product/:id', component: ProductDetailsComponent },
   {path: 'users', loadChildren:() => import('./features/products/products.module').then(m=>m.ProductsModule),canActivate:[authGuard,adminGuard]},
+  {path: 'basket', component: BasketComponent, canActivate:[authGuard]},
   {path: 'home', component: HomeComponent, canActivate:[authGuard]},
   {path: 'about', component: AboutComponent, canActivate:[authGuard]},
   {path: 'user-form', component: LoginSignupComponent },
