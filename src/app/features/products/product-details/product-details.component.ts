@@ -5,6 +5,7 @@ import { GenericService } from '../../../core/services/generic.service';
 import { Product } from '../../../core/models/product.model';
 import { User } from '../../../core/models/user.model';
 import { BasketService } from '../../../core/services/basket.service';
+import { LoginService } from '../../../core/services/login.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,17 +17,21 @@ export class ProductDetailsComponent implements OnInit {
 
   private route = inject(ActivatedRoute);
   private bService = inject(BasketService); 
+  // private auth = inject(LoginService);
   private pService: GenericService<IProduct, IProduct>;
 
   product!: Product;
 
   constructor(
+    private auth:LoginService,
     @Inject('productsService') productsService: GenericService<IProduct, IProduct>
   ) {
     this.pService = productsService;
   }
 
   ngOnInit(): void {
+    console.log("El usuario se mantiene?",this.auth.getAbstract());
+    
     const productTitle = this.route.snapshot.paramMap.get('id');
     if (productTitle) {
       this.pService.getById(Number(productTitle)).subscribe({

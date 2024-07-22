@@ -54,8 +54,12 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
+    console.log('click');
+    console.log(this.service.user);
+    
     this.service.user.next(undefined);
     sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['user-form']);
   }
 

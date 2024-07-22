@@ -1,16 +1,16 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Optional, SkipSelf } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
   map,
-  Observable,
   tap,
   throwError,
 } from 'rxjs';
 import { Iuser } from '../interfaces/user.interface';
 import { environment } from '../../environments/environment';
 import { Data } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,19 @@ import { Data } from '@angular/router';
 export class LoginService {
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
+  private asbtractUSer?:User;
 
   user = new BehaviorSubject<Iuser|undefined>(this.getUserData());
+constructor(@Optional() @SkipSelf() loginService:LoginService){
+if(loginService){
+  throw new Error("ya estaba instanciado");
+}
+}
+
+getAbstract(){
+return this.asbtractUSer;
+}
+ 
 
   postUser(user: Iuser) {
     return this.http.post<Iuser>(`${this.apiUrl}/users`, user).pipe(
@@ -53,19 +64,22 @@ export class LoginService {
 
   getUser() {
     const header = new HttpHeaders();
-    header.append('Authorization', sessionStorage.getItem('token')!);
-    return this.http.get<Iuser>(`${this.apiUrl}/auth/profile`).pipe(
+    this.http.get<Iuser>(`${this.apiUrl}/auth/profile`).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
         }
       }),
       map((data) => {
+        console.log("hemos cogido el user")
+        this.asbtractUSer = new User(data);
+        console.log("hemos registrado el user",this.asbtractUSer);
         sessionStorage.setItem('user', JSON.stringify(data));
+        this.user.next(new User(data));
       }),
       catchError((error) => {
         throw error;
       })
-    );
+    ).subscribe();
   }
 
   getUserData(): Iuser {

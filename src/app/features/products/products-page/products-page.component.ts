@@ -25,7 +25,7 @@ import { BasketService } from '../../../core/services/basket.service';
 })
 export class ProductsPageComponent implements OnDestroy, OnInit {
   private router = inject(Router);
-  private auth = inject(LoginService);
+  // private auth = inject(LoginService);
   private subs: Subscription[] = [];
   private bService = inject(BasketService);
 
@@ -42,6 +42,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   pService: GenericService<IProduct, IProduct>;
   uService: GenericService<User, User>;
   constructor(
+    private auth:LoginService,
     @Inject('categoriesService')
     categoryService: GenericService<ICategory, ICategory>,
     @Inject('productsService')

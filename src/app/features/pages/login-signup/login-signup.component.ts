@@ -47,22 +47,24 @@ export class LoginSignupComponent implements OnInit {
     const { email, password } = this.LogInForm?.value;
     this.service.postAuth(email, password).subscribe({
       next: () => {
+        this.route.navigate(['home']);
+        console.log("aquí deberia haber navegado");
+        
         if (sessionStorage.getItem('token')) {
           console.log('aquí va a coger el user');
-          
-          this.service.getUser().subscribe(
-            {
-              next: (data) => {
-                console.log("aqui navega");
+          // this.service.getUser().subscribe(
+          //   {
+          //     next: (data) => {
+          //       console.log("aqui navega");
                 
-                this.route.navigate(['home']).then(() => {
-                  window.location.reload();
-                });
+          //       this.route.navigate(['home']).then(() => {
+          //         window.location.reload();
+          //       });
 
-              }, error: (e) => { throw e }
+          //     }, error: (e) => { throw e }
 
-            }
-          )
+          //   }
+          // )
 
         }
       },

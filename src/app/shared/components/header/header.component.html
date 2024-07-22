@@ -1,16 +1,41 @@
 <header>
-    <button class="themeIcon" (click)="toggleTheme()">🌓</button>
-    <h1><a appGoHome>VUELING UNIVERSITY - 2024</a></h1>
-    <button (click)="logout()" class="logout" >Log Out</button>
+  <button class="themeIcon" (click)="toggleTheme()">🌓</button>
+  <h1><a appGoHome>VUELING UNIVERSITY - 2024</a></h1>
+  <button *ngIf="user" (click)="logout()" class="logout">Log Out</button>
 </header>
 <ng-container *ngIf="user">
-    <nav class="navigator">
-        <ul>
-            <li routerLink="home" class="nav-left" [class.active]="isActive('/home')"><i class="fa-solid fa-house"></i> HOME</li>
-            <li routerLink="products" class="nav-center" [class.active]="isActive('/products')"><i class="fa-solid fa-bag-shopping"></i> PRODUCTS</li>
-            <li routerLink="users" *ngIf="user.role==='admin'" class="nav-center" [class.active]="isActive('/users')"><i class="fa-solid fa-user"></i> USERS</li>
-            <li routerLink="about" class="nav-right" [class.active]="isActive('/about')"><i class="fa-solid fa-info"></i> ABOUT</li>
-        </ul>
-            <i class="fa-solid fa-basket-shopping">{{basket.length}}</i>
-    </nav>
+  <nav class="navigator">
+    <ul>
+      <li routerLink="home" class="nav-left" [class.active]="isActive('/home')">
+        <i class="fa-solid fa-house"></i> HOME
+      </li>
+      <li
+        routerLink="products"
+        class="nav-center"
+        [class.active]="isActive('/products')"
+      >
+        <i class="fa-solid fa-bag-shopping"></i> PRODUCTS
+      </li>
+      <li
+        routerLink="users"
+        *ngIf="user.role === 'admin'"
+        class="nav-center"
+        [class.active]="isActive('/users')"
+      >
+        <i class="fa-solid fa-user"></i> USERS
+      </li>
+      <li
+        routerLink="about"
+        class="nav-right"
+        [class.active]="isActive('/about')"
+      >
+        <i class="fa-solid fa-info"></i> ABOUT
+      </li>
+    </ul>
+    <ng-container *ngIf="basket.length>0"
+      ><i class="fa-solid fa-basket-shopping">{{
+        basket.length
+      }}</i></ng-container
+    >
+  </nav>
 </ng-container>

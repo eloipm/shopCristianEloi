@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit{
 
 
   ngOnInit(){
+    this.service.getUser();
     //window.location.reload();
     this.service.retrieveUser().subscribe(
       data=> this.user=data
