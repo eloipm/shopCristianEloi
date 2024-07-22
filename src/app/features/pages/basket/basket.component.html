@@ -5,11 +5,15 @@
             <img [src]="item.images[0] | defaultImage | safeUrl : 'url'" alt="{{ item.title }}">
             <div class="details">
                 <h2>{{ item.title }}</h2>
-                <p>{{ item.price | currency: 'EUR' }}</p>
+                <p>{{ item.price*item.quantity | currency: 'EUR' }}</p>
             </div>
+            <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item)" value="item.quantity" class="quantity-input">
+            <button (click)="deleteItem(item.id)" class="delete-button">Delete</button>
         </div>
+        <h1>Total: {{ totalPrice | currency: 'EUR' }}</h1>
+        <button class="clear-button" (click)="removeAllItems()">Clear basket</button>
     </div>
     <ng-template #emptyBasket>
-        <p>Your cart is empty.</p>
+        <h1>Your cart is empty.</h1>
     </ng-template>
 </main>

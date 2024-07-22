@@ -10,6 +10,7 @@ export class Product implements IProduct, CardInfo {
   description: string;
   category: ICategory;
   images: string[];
+  quantity:number=1;
 
   constructor(product: IProduct) {
     this.id = product.id;
