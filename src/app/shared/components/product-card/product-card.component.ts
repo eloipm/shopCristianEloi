@@ -8,10 +8,10 @@ import { User } from '../../../core/models/user.model';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-@Input() item?: User|Product;
-@Output() sentItem:EventEmitter<User|Product> = new EventEmitter<User|Product>();
+  @Input() item?: User | Product;
+  @Output() sentItem: EventEmitter<User | Product> = new EventEmitter<User | Product>();
 
-actionBtn(){
-  this.sentItem?.emit(this.item!);
-}
+  actionBtn() {
+    this.sentItem?.emit(this.item!);
+  }
 }

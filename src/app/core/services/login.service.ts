@@ -18,19 +18,19 @@ import { User } from '../models/user.model';
 export class LoginService {
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
-  private asbtractUSer?:User;
+  private asbtractUSer?: User;
 
-  user = new BehaviorSubject<Iuser|undefined>(this.getUserData());
-constructor(@Optional() @SkipSelf() loginService:LoginService){
-if(loginService){
-  throw new Error("ya estaba instanciado");
-}
-}
+  user = new BehaviorSubject<Iuser | undefined>(this.getUserData());
+  constructor(@Optional() @SkipSelf() loginService: LoginService) {
+    if (loginService) {
+      throw new Error("ya estaba instanciado");
+    }
+  }
 
-getAbstract(){
-return this.asbtractUSer;
-}
- 
+  getAbstract() {
+    return this.asbtractUSer;
+  }
+
 
   postUser(user: Iuser) {
     return this.http.post<Iuser>(`${this.apiUrl}/users`, user).pipe(

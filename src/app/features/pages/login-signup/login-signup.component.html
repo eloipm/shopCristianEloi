@@ -3,30 +3,32 @@
         <input type="checkbox" id="chk" aria-hidden="true">
         <div class="signup">
             <form [formGroup]="SignUpForm!" (ngSubmit)="ClickSignUp()">
-                <label  for="chk" aria-hidden="true">Sign up</label>
-                <input id="signup-name" type="text" formControlName="name" name="Name" id="suName" placeholder="Name" required>
-
-                <input type="text" formControlName="email" name="Email" id="suEmail" placeholder="Email"
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input id="signup-name" type="text" formControlName="name" name="Name" id="suName" placeholder="Name"
                     required>
+
+                <input type="text" formControlName="email" name="Email" id="suEmail" placeholder="Email" required>
 
                 <input type="password" formControlName="password" name="Password" id="suPassword" placeholder="Password"
                     required>
                 <select formControlName="role" name="role" id="role">
+                    <option value="" disabled selected hidden>Choose a role</option>
                     <option value="admin">Administrator</option>
                     <option value="customer">Customer</option>
                 </select>
 
-                <button type="submit" class="button">Sign up</button>
+                <button type="submit" class="button" [disabled]="SignUpForm!.invalid">Sign up</button>
             </form>
         </div>
 
         <div class="login">
             <form [formGroup]="LogInForm!" (ngSubmit)="ClickLogIn()">
                 <label id="login-label" for="chk" aria-hidden="true">Log in</label>
-                <input type="email" name="Email" formControlName="email" id="liEmail" placeholder="Email"  required>
-                <input type="password" name="Password" formControlName="password" id="liPassword" placeholder="Password" required>
-            <button id="login-button" class="button">Log in</button>
-        </form>
+                <input type="email" name="Email" formControlName="email" id="liEmail" placeholder="Email" required>
+                <input type="password" name="Password" formControlName="password" id="liPassword" placeholder="Password"
+                    required>
+                <button id="login-button" class="button" [disabled]="LogInForm!.invalid">Log in</button>
+            </form>
         </div>
     </div>
 </main>
