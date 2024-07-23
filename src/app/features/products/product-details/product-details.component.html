@@ -1,7 +1,7 @@
 <main>
     <div *ngIf="item" class="product-card">
         <h2>{{ item.title }}</h2>
-        <img [src]="item.images[0] | defaultImage : item | safeUrl : 'url'" alt="{{ item.title }}">
+        <img [src]="item.images[0] | defaultImage : item | safeUrl : 'url'" alt="{{ item.title }}"><br>
         <span>{{ item.price }} €</span>
         <p>{{ item.description }}</p>
         <button (click)="addToCart()">Add to cart</button>

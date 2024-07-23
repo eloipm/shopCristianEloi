@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { LoginService } from '../../../core/services/login.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login-signup',
@@ -21,7 +22,7 @@ export class LoginSignupComponent implements OnInit {
     const avatar = environment.avatar;
 
     this.SignUpForm = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required,this.customXssValidator),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       role: new FormControl('', [Validators.required]),
@@ -70,6 +71,12 @@ export class LoginSignupComponent implements OnInit {
       },
       error: (err) => { console.error(err) }
     });
-
+    
   }
+
+  customXssValidator(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    const forbidden = /<script[\s\S]*?>[\s\S]*?<\/script>/i.test(control.value || '');
+    return forbidden ? Promise.resolve({ 'xss': { value: control.value } }) : Promise.resolve(null);
+  }
+  
 }

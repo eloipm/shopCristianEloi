@@ -42,7 +42,7 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   pService: GenericService<IProduct, IProduct>;
   uService: GenericService<User, User>;
   constructor(
-    private auth:LoginService,
+    private auth: LoginService,
     @Inject('categoriesService')
     categoryService: GenericService<ICategory, ICategory>,
     @Inject('productsService')
@@ -73,28 +73,29 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
     if (this.auth.getUserData().role === 'admin') {
       if (item?.getType() === 'user') {
         this.deleteUser(item!.getId());
-      } 
+      }
     }
   }
 
-  addToCart(item:Product){
+  addToCart(item: Product) {
     this.bService.saveBasket(item);
   }
 
   deleteUser(id: number) {
     console.log("eliminar user");
-    
-    if(id===this.auth.getUserData().id){
+
+    if (id === this.auth.getUserData().id) {
       return;
     }
     this.uService.remove(id).subscribe(
       {
-        next:(data)=>{
+        next: (data) => {
           console.log('updatear la lista');
-          
-        this.getUsers()
+
+          this.getUsers()
         },
-        error:(err)=>{console.log(err);
+        error: (err) => {
+          console.log(err);
         }
       }
     );;
@@ -111,17 +112,15 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
     // );
   }
 
-  getCategories(){
+  getCategories() {
     this.categoriesList = [];
-    this.subs.push(   
+    this.subs.push(
       this.cService.getList().subscribe({
         next: (data) => {
           this.categoriesList = data;
-        
-          
           this.loading = false;
         },
-        complete: () => {},
+        complete: () => { },
       })
     );
   }
@@ -134,32 +133,35 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
           data.forEach((product) => {
             this.allList.push(new Product(product));
             this.showList = this.allList;
-            this.loading = false;
+
           }),
       })
-    );
+    ); 
     this.filterList();
+    this.loading = false;
   }
 
   getUsers() {
     console.log("vamos a los users");
-    
+
     this.allList = [];
     this.subs.push(
       this.uService!.getList().subscribe({
-        next: (data) =>
-         { data.forEach((user) => {
-              if(!this.allList.find((listItem)=>listItem.id===user.id)){
-                this.allList.push(new User(user));
-              }
-            })
-            this.showList = this.allList;
-            this.loading = false;
-          }})
-        ,
-      
+        next: (data) => {
+          data.forEach((user) => {
+            if (!this.allList.find((listItem) => listItem.id === user.id)) {
+              this.allList.push(new User(user));
+            }
+          })
+          this.showList = this.allList;
+          
+        }
+      })
+      ,
+
     );
     this.filterList();
+    this.loading = false;
   }
 
   updateCategory(categoryId: number) {
@@ -173,24 +175,24 @@ export class ProductsPageComponent implements OnDestroy, OnInit {
   }
 
   filterList() {
-    console.log("hasta aqui llega",this.currentCategory);
-    
+    console.log("hasta aqui llega", this.currentCategory);
+
     this.showList = this.allList.filter(
       (data) =>
-        data.getSearchValue().includes(this.searchValue) 
-      &&
-        data.isCategory(this.currentCategory??0)
+        data.getSearchValue().includes(this.searchValue)
+        &&
+        data.isCategory(this.currentCategory ?? 0)
     );
   }
 
-  updateList(list: (User|Product)[]){
-    list.forEach((item)=>{
-      if(this.allList.find((listItem)=>listItem.getId()===item.getId())){
+  updateList(list: (User | Product)[]) {
+    list.forEach((item) => {
+      if (this.allList.find((listItem) => listItem.getId() === item.getId())) {
         this.allList.push(item);
       }
     })
   }
-  
+
 
   navigateToProductDetails(item: Product | User) {
     if (item instanceof Product) {
