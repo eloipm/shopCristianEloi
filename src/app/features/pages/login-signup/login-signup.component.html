@@ -4,7 +4,7 @@
         <div class="signup">
             <form [formGroup]="SignUpForm!" (ngSubmit)="ClickSignUp()">
                 <label for="chk" aria-hidden="true">Sign up</label>
-                <input id="signup-name" type="text" formControlName="name" name="Name" id="suName" placeholder="Name"
+                <input appAutofocus  id="signup-name" type="text" formControlName="name" name="Name" id="suName" placeholder="Name"
                     required>
 
                 <input type="text" formControlName="email" name="Email" id="suEmail" placeholder="Email" required>
