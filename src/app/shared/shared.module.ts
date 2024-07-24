@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { GoHomeDirective } from './directives/go-home.directive';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 
 
@@ -28,7 +29,8 @@ import { GoHomeDirective } from './directives/go-home.directive';
     FilterComponent,
     DefaultImagePipe,
     SafeUrlPipe,
-    GoHomeDirective
+    GoHomeDirective,
+    AutofocusDirective
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { GoHomeDirective } from './directives/go-home.directive';
     FilterComponent,
     SpinnerComponent,
     DefaultImagePipe,
-    SafeUrlPipe
+    SafeUrlPipe,
+    AutofocusDirective
   ]
 })
 export class SharedModule { }
